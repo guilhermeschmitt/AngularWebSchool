@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html data-ng-app="BeMEAN" >
+<head>
+	<meta charset="UTF-8">
+	<title>Exercício 02 - Aula 4</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/exercicios.css">
+	<script src="../../scripts/angular.min.js"></script>
+</head>
+<body data-ng-controller="UserController as User">
+	<div class="row wrapper">
+		<h1>{{User.titulo}}</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Signo</th>
+				</tr>
+				<tbody>
+					<tr data-ng-repeat="user in User.users | orderBy:'signo'" data-ng-init="signo='Libra'">
+						<th>{{user.name}}</th>
+						<th>{{user.email}}</th>
+						<th>{{signo}}</th>
+					</tr>
+				</tbody>
+			</thead>
+		</table>
+		<br/>
+		<div data-ng-controller="CursoController as Curso">
+			<h1>{{Curso.titulo}}</h1>
+			<table>
+				<thead>
+					<tr>
+						<th>Curso</th>
+						<th>Professor</th>
+						<th>Carga (Hr)</th>
+					</tr>
+					<tbody>
+						<tr data-ng-repeat="curso in Curso.cursos | orderBy:'carga'" data-ng-init="carga='120'">
+							<th>{{curso.name}}</th>
+							<th>{{curso.teacher}}</th>
+							<th>{{carga}}</th>
+						</tr>
+					</tbody>
+				</thead>
+			</table>
+		</div>
+		<div data-ng-controller="ProfessorController as Professor">
+			<h1>{{Professor.universidade}}</h1>
+			<table>
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Aula</th>
+						<th>Idade</th>
+						<th>De</th>
+						<th>Carga (Hr)</th>
+					</tr>
+					<tbody>
+						<tr data-ng-repeat="professor in Professor.professores | orderBy:'carga'" data-ng-init="carga='90'">
+							<th>{{professor.name}}</th>
+							<th>{{professor.aula}}</th>
+							<th>{{professor.idade}}</th>
+							<th>{{professor.idade | maioridade}}</th>
+							<th>{{carga}}</th>
+						</tr>
+					</tbody>
+				</thead>
+			</table>
+		</div>
+	</div>
+	<script src="../../scripts/aula_04/exercicio_02.js"></script>
+</body>
+</html>

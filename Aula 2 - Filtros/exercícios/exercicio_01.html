@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html data-ng-app="BeMEAN">
+<head>
+	<meta charset="UTF-8">
+	<title>Exercício 01 - Aula 2</title>
+	<script src="../../angular.min.js"></script>
+</head>
+<body class="wrapper">
+	<label for="nome">Seu nome:
+		<input type="text" data-ng-model="nome">
+	</label>
+
+	<br/> Olá, {{ nome | uppercase }}
+	<br/> Olá, {{ nome | lowercase}}
+	<br/> Olá, {{ nome | limitTo:5}}
+	<br/><label for="numero">Informe um número:
+		<input type="text" data-ng-model="numero">
+	</label>
+	<br/> O número digitador foi: {{ numero | number}}
+	<br/><label for="data">Informe a data:
+		<input type="number" data-ng-model="data">
+	</label>
+	<br/> A data informada foi: {{data | date}}
+
+	<script src="../../scripts/aula_02/exercicio_01.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+1 - Adicionar mais 1 campo em todos os Controllers e utilizar ele em orderBy
+
+2 - Utilizar esse valor adicional no ng-init para cada ng-repeat da View
+
+3 - Criar um campo de filtro para cada ng-repeat

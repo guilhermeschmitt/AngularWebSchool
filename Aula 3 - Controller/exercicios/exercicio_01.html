@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-ng-app="BeMEAN">
+<head>
+	<meta charset="UTF-8">
+	<title>Exercício 01 - Aula 3</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/exercicios.css">
+	<script src="../../scripts/angular.min.js"></script>
+</head>
+<body data-ng-controller="UserController as User">
+	<div class="row wrapper">
+		<h1>{{User.titulo}}</h1>
+		<lu>
+			<li data-ng-repeat="user in User.users">
+				{{ user.name}} - {{ user.email}}
+			</li>
+		</lu>
+		<div data-ng-controller="CursoController as Curso">
+			<h2>{{Curso.titulo}}</h2>
+			<lu>
+				<li data-ng-repeat="curso in Curso.cursos">
+					{{ curso.name}} - {{ curso.teacher}}
+				</li>
+			</lu>
+		</div>
+		<div data-ng-controller="ProfessorController as Professor">
+			<h2>{{Professor.universidade}}</h2>
+			<lu>
+				<li data-ng-repeat="professor in Professor.professores">
+					{{ professor.name}} - {{ professor.aula}}
+				</li>
+			</lu>
+		</div>
+	</div>
+	<script src="../../scripts/aula_03/exercicio_01.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+html body select{
+	display: inline-block !important;
+}
+
+[disabled]{
+	background-color: #ccc !important;
+}
+
+.wrapper {
+	      max-width: 600px;
+	      margin: 0 auto;
+	    }
+	    .animate{
+	    	transition: all linear 0.5s;
+	    }
+	    .ng-hide{
+	    	height: 0;
+	    }
+	    .editanimate{
+			animation-duration: 3s;
+			animation-name: slidein;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+	    }
+	    .item.ng-enter{
+	    	--webkit-transition: all linear 0.5s;
+      		transition: all linear 0.5s;
+	    }
+	    .item.ng-enter{
+	      animation-name: moveenter;
+	    	animation-duration: 4s;
+	    }
+
+	    .item.ng-enter.ng-enter-active{
+	    	opacity: 1;
+	    }
+
+	    @keyframes moveenter {
+			0%   {color: red;}
+    		25%  {color: yellow;}
+    		50%  {color: blue;}
+   			100% {color: green;}
+		}
+
+	     .item.ng-leave{
+	      ---webkit-transition: all linear 1s;
+	      transition: all linear 1s;
+	    }
+
+	    .item.ng-leave{
+	      opacity: 1;
+	    }
+
+	    .item.ng-leave.ng-leave-active{
+	      opacity: 0.5;
+	      animation-name: moveleave;
+	      animation-duration: 4s;
+	    }
+		
+		@keyframes moveleave{
+	    	0%   {background-color:red}
+		    25%  {background-color:yellow}
+		    50%  {background-color:blue}
+		    75%  {background-color:green}
+		    100% {background-color:red}
+	    }

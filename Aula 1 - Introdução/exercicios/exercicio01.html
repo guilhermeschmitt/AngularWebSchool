@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Exercício 01 - Aula 1</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/exercicios.css">
+	<script src="../../scripts/angular.min.js"></script>
+</head>
+<body data-ng-app="ExercicioUmAulaUm">
+	<div class="wrapper">
+		<label for="Nome">
+			Nome: <input type="text" data-ng-model="nome">
+		</label> <br/>
+		<label for="Email">
+			Email: <input type="email" data-ng-model="email">
+		</label><br/>
+		<label for="Telefone">
+			Telefone: <input type="number" data-ng-model="telefone">
+		</label><br/>
+		<label for="Idade">
+			Idade: <input type="number" min="1" max="120" data-ng-model="idade">
+		</label><br/>
+		<h2>Nome: {{nome}}</h2><br/>
+		<h3>Email: {{email}}</h3><br/>
+		<h4>Telefone: {{telefone}}<h4><br/>
+		<h4>Idade: {{idade}}<h4>
+	</div>	
+	<script src="../../scripts/aula_01/exercicio_01.js"></script>
+</body>
+</html>

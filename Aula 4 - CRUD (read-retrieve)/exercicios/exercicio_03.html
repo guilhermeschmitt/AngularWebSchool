@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html data-ng-app="BeMEAN">
+<head>
+	<meta charset="UTF-8">
+	<title>Exercício 03 - Aula 4</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/exercicios.css">
+	<script src="../../scripts/angular.min.js"></script>
+</head>
+<body data-ng-controller="UserController as User">
+	<div class="row wrapper">
+		<h1>{{User.titulo}}</h1>
+		<p class="col s12">
+			<label><input data-ng-model="searchUser" placeholder="Buscar User"></label>
+		</p>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Signo</th>
+				</tr>
+				<tbody>
+					<tr data-ng-repeat="user in User.users | orderBy:'signo' | filter:searchUser">
+						<th>{{user.name}}</th>
+						<th>{{user.email}}</th>
+						<th>{{user.signo}}</th>
+					</tr>
+				</tbody>
+			</thead>
+		</table>
+		<br/>
+		<div data-ng-controller="CursoController as Curso">
+			<h1>{{Curso.titulo}}</h1>
+			<p class="col s12">
+				<label><input data-ng-model="searchCurso" placeholder="Buscar Curso"></label>
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Curso</th>
+						<th>Professor</th>
+						<th>Carga (Hr)</th>
+					</tr>
+					<tbody>
+						<tr data-ng-repeat="curso in Curso.cursos | orderBy:'carga' | filter:searchCurso">
+							<th>{{curso.name}}</th>
+							<th>{{curso.teacher}}</th>
+							<th>{{curso.carga}}</th>
+						</tr>
+					</tbody>
+				</thead>
+			</table>
+		</div>
+		<div data-ng-controller="ProfessorController as Professor">
+			<h1>{{Professor.universidade}}</h1>
+			<p class="col s12">
+				<label><input data-ng-model="searchProfessor" placeholder="Buscar Professor"></label>
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Aula</th>
+						<th>Idade</th>
+						<th>De</th>
+						<th>Carga (Hr)</th>
+					</tr>
+					<tbody>
+						<tr data-ng-repeat="professor in Professor.professores | orderBy:'carga' | filter:searchProfessor">
+							<th>{{professor.name}}</th>
+							<th>{{professor.aula}}</th>
+							<th>{{professor.idade}}</th>
+							<th>{{professor.idade | maioridade}}</th>
+							<th>{{professor.carga}}</th>
+						</tr>
+					</tbody>
+				</thead>
+			</table>
+		</div>
+	</div>
+	<script src="../../scripts/aula_04/exercicio_03.js"></script>
+</html>

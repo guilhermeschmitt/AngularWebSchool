@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html data-ng-app="BeMEAN">
+<head>
+	<meta charset="UTF-8">
+	<title>Exercício 02 - Aula 5</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/exercicios.css">
+	<script src="../../scripts/angular.min.js"></script>
+</head>
+<body data-ng-controller="UserController as User">
+	<div class="row wrapper">
+		<h1>{{User.titulo}}</h1>
+		<p class="col s12">
+			<input type="text" data-ng-model="form.User.name" placeholder="Nome"/>
+			<input type="email" data-ng-model="form.User.email" placeholder="Email"/>
+			<input type="text" data-ng-model="form.User.signo" placeholder="Signo" />
+		</p>
+		<button class="btn btn-large green waves-effect waves-light col s12" 
+				data-ng-click="User.add(form.User)" type="submit" name="action">
+			Adicionar Usuário
+		</button>
+		<p class="col s12">
+			<label><input data-ng-model="searchUser" placeholder="Buscar User"></label>
+		</p>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Signo</th>
+				</tr>
+				<tbody>
+					<tr data-ng-repeat="user in User.users | orderBy:'signo' | filter:searchUser">
+						<th>{{user.name}}</th>
+						<th>{{user.email}}</th>
+						<th>{{user.signo}}</th>
+					</tr>
+				</tbody>
+			</thead>
+		</table>
+		<br/>
+		<div data-ng-controller="CursoController as Curso">
+			<h1>{{Curso.titulo}}</h1>
+			<p class="col s12">
+				<input type="text" data-ng-model="form.Curso.name" placeholder="Curso"/>
+				<input type="text" data-ng-model="form.Curso.teacher" placeholder="Professor"/>
+				<input type="numeric" data-ng-model="form.Curso.carga" placeholder="Carga Horária" />
+			</p>
+		<button class="btn btn-large green waves-effect waves-light col s12" 
+				data-ng-click="Curso.add(form.Curso)" type="submit" name="action">
+			Adicionar Curso
+		</button>
+			<p class="col s12">
+				<label><input data-ng-model="searchCurso" placeholder="Buscar Curso"></label>
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Curso</th>
+						<th>Professor</th>
+						<th>Carga (Hr)</th>
+					</tr>
+					<tbody>
+						<tr data-ng-repeat="curso in Curso.cursos | orderBy:'carga' | filter:searchCurso">
+							<th>{{curso.name}}</th>
+							<th>{{curso.teacher}}</th>
+							<th>{{curso.carga}}</th>
+						</tr>
+					</tbody>
+				</thead>
+			</table>
+		</div>
+		<div data-ng-controller="ProfessorController as Professor">
+			<h1>{{Professor.universidade}}</h1>
+			<p class="col s12">
+				<input type="text" data-ng-model="form.Professor.name" placeholder="Nome do Professor"/>
+				<input type="text" data-ng-model="form.Professor.aula" placeholder="Nome da Aula"/>
+				<input type="numeric" data-ng-model="form.Professor.idade" placeholder="Idade do Professor" />
+				<input type="numeric" data-ng-model="form.Professor.carga" placeholder="Carga Horária" />
+			</p>
+			<button class="btn btn-large green waves-effect waves-light col s12" 
+				data-ng-click="Professor.add(form.Professor)" type="submit" name="action">
+				Adicionar Professor
+			</button>
+			<p class="col s12">
+				<label><input data-ng-model="searchProfessor" placeholder="Buscar Professor"></label>
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Aula</th>
+						<th>Idade</th>
+						<th>De</th>
+						<th>Carga (Hr)</th>
+					</tr>
+					<tbody>
+						<tr data-ng-repeat="professor in Professor.professores | orderBy:'carga' | filter:searchProfessor">
+							<th>{{professor.name}}</th>
+							<th>{{professor.aula}}</th>
+							<th>{{professor.idade}}</th>
+							<th>{{professor.idade | maioridade}}</th>
+							<th>{{professor.carga}}</th>
+						</tr>
+					</tbody>
+				</thead>
+			</table>
+		</div>
+		<div data-ng-controller="CBLOLController as CBLOL">
+			<h1>{{CBLOL.campeonato}}</h1>
+			<p class="col s12">
+				<input type="text" data-ng-model="form.CBLOL.name" placeholder="Nome do Time"/>
+				<input type="text" data-ng-model="form.CBLOL.mjogador" placeholder="Nome do Melhor Jogador"/>
+				<input type="numeric" data-ng-model="form.CBLOL.idade" placeholder="Idade do jogador"/>
+			</p>
+			<button class="btn btn-large green waves-effect waves-light col s12" 
+				data-ng-click="CBLOL.add(form.CBLOL)" type="submit" name="action">
+				Adicionar Time
+			</button>
+			<p class="col s12">
+				<label><input data-ng-model="searchTime" placeholder="Buscar Time"></label>
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Time</th>
+						<th>Nome do Melhor Jogador</th>
+						<th>Idade</th>
+						<th>De</th>
+					</tr>
+					<tbody>
+						<tr data-ng-repeat="time in CBLOL.times | orderBy:'idade' | filter:searchTime">
+							<th>{{time.name}}</th>
+							<th>{{time.mjogador}}</th>
+							<th>{{time.idade}}</th>
+							<th>{{time.idade | maioridade}}</th>
+						</tr>
+					</tbody>
+				</thead>
+			</table>
+		</div>
+	</div>
+	<script src="../../scripts/aula_05/exercicio_02.js"></script>
+</body>
+</html>

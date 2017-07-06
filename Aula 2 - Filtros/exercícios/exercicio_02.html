@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html data-ng-app="BeMEAN">
+<head>
+	<meta charset="UTF-8">
+	<title>Exercício 02 - Aula 2</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/exercicios.css">
+	<script src="../../scripts/angular.min.js"></script>
+</head>
+<body class="wrapper">
+	<label for="idade">Sua idade:
+		<input type="number" data-ng-model="idade">
+	</label>
+	<br/> Você é de: {{idade | maioridade}}
+
+	<script src="../../scripts/aula_02/exercicio_02.js"></script>
+</body>
+</html>
