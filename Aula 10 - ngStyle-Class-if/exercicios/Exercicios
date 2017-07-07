@@ -1,0 +1,7 @@
+1 - Criar uma funcionalidade para estilizar a linha da tabela quando o usuário for selecionado, via checkbox, com ng-style.
+
+2 - Criar mais 2 classes condicionais quando o elemento é selecionado com ng-class
+
+3 - Zebrar a lista utilizando um teste ternário no ng-class.
+
+4 - Utilize o ng-if para estilizar, na listagem dos usuários, quando um elemento está sendo editado.

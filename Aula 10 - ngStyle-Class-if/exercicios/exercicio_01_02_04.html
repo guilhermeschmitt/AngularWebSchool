@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html data-ng-app="BeMEAN">
+<head>
+	<meta charset="UTF-8">
+	<title>Exercício 01, 02 e 04 - Aula 10</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/woanimate.css">
+	<script src="../../scripts/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+</head>
+</head>
+<body>
+	<div class="row wrapper">
+		<div data-ng-controller="ProfessorController as Professor">
+			<h1 data-ng-class="Professor.getTituloStyle()">{{Professor.universidade}}</h1>
+			<p class="col s12">
+				<input type="text" data-ng-model="Professor.form.name" placeholder="Nome do Professor"/>
+				<input type="text" data-ng-model="Professor.form.aula" placeholder="Nome da Aula"/>
+				<input type="numeric" data-ng-model="Professor.form.idade" placeholder="Idade do Professor" />
+				<input type="numeric" data-ng-model="Professor.form.carga" placeholder="Carga Horária" />
+			</p>
+			<button class="btn btn-large green waves-effect waves-light col s12" 
+				data-ng-if="!Professor.editing" data-ng-click="Professor.add(Professor.form)" type="submit" name="action">
+				Adicionar Professor
+			</button>
+			<button class="btn btn-large blue waves-effect waves-light col s12" 
+				data-ng-if="Professor.editing" data-ng-click="Professor.save(Professor.form)" type="submit" name="action">
+				Salvar edição
+			</button>
+			<p class="col s12">
+				<label><input data-ng-model="searchProfessor" placeholder="Buscar Professor"></label>
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Nome</th>
+						<th>Aula</th>
+						<th>Idade</th>
+						<th>De</th>
+						<th>Carga (Hr)</th>
+					</tr>
+					<tbody>
+						<tr data-ng-style="checkboxStyle" data-ng-repeat="professor in Professor.professores | filter:searchProfessor"
+							data-ng-if="!Professor.editing" data-ng-class="{bold: !professor.selecionado, strike: professor.selecionado}">
+							<td>
+								<input type="checkbox" id="professor-{{$index}}" data-ng-click="checkboxStyle = Professor.checkboxStyle()" data-ng-model="professor.selecionado">
+								<label for="professor-{{$index}}"></label>
+							</td>
+							<th>{{professor.name}}</th>
+							<th>{{professor.aula}}</th>
+							<th>{{professor.idade}}</th>
+							<th>{{professor.idade | maioridade}}</th>
+							<th>{{professor.carga}}</th>
+							<td>
+								<button class="btn btn-large blue waves-effect waves-light col s12" 
+									data-ng-if="!Professor.editing" data-ng-click="Professor.edit(professor, $index)" 
+									type="submit" name="action">
+									Editar
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</thead>
+			</table>
+			<p class="userEdit" data-ng-if="Professor.editing">
+				USUÁRIO SENDO EDITADO
+			</p>
+			<button class="btn btn-large red waves-effect waves-light col s12" 
+				data-ng-click="Professor.remove(Professor.professores)" type="submit" name="action">
+				Deletar Professor
+			</button>
+		</div>
+		</div>
+	</div>
+	<script src="../../scripts/aula_10/exercicio_01_02_04.js"></script>
+</body>
+</html>
