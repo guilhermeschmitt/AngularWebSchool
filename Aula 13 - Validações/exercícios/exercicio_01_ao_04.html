@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html data-ng-app="BeMEAN">
+<head>
+	<meta charset="UTF-8">
+	<title>Exercício 01 ao 04 - Aula 13</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" href="../../css/woanimate.css">
+	<script src="../../scripts/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.js"></script>
+</head>
+</head>
+<body>
+	<div class="row wrapper">
+		<div data-ng-controller="ProfessorController as Professor">
+			<h1 data-ng-class="Professor.getTituloStyle()">{{Professor.universidade}}</h1>
+
+			<p>
+		      Matéria que ele leciona: {{Professor.selected}}
+		    </p>
+		    <select data-ng-options="professor.aula as professor.name for professor in Professor.professores | orderBy:'name'" data-ng-model="Professor.selected">
+		      <option value="">Escolha um professor</option>
+		    </select>
+			<form name="Professor.professorForm" data-ng-submit="Professor.submitForm(Professor.form)" novalidate="">
+			<div>
+				<input type="text" name="name" data-ng-model="Professor.form.name" required placeholder="Nome do Professor"/>
+				<div data-ng-messages="Professor.professorForm.name.$error">
+					<p data-ng-message="required">Nome do <b>PROFESSOR</b> é obrigatório.</p>
+				</div>
+			</div>
+			<br/>
+			<div>
+				<input type="text" name="aula" data-ng-model="Professor.form.aula" required placeholder="Nome da Aula"/>
+				<div data-ng-messages="Professor.professorForm.aula.$error">
+					<p data-ng-message="required">Nome da <b>AULA</b> é obritatória.</p>
+				</div>
+			</div>
+			<br/>
+			<div>
+				<input type="number" min="0" max="120" name="idade" data-ng-model="Professor.form.idade" 
+				       required placeholder="Idade do Professor" />
+				<div data-ng-messages="Professor.professorForm.idade.$error">
+					<p data-ng-message="required"><b>IDADE</b> é um campo obrigatório.</p>
+					<p data-ng-message="min"><b>IDADE</b> deve ter um valor entre 0 e 120.</p>
+				</div>
+			</div>
+			<br/>
+			<div>
+				<input type="date" min="1900-01-01" name="date" data-ng-model="Professor.form.dia_contratacao" 
+				       required placeholder="Dia da Contratação" />
+				<div data-ng-messages="Professor.professorForm.date.$error">
+					<p data-ng-message="required"><b>DIA DA CONTRATAÇÃO</b> é um campo obrigatório.</p>
+					<p data-ng-message="min">Data <b>MÍNIMA</b> é dia 01-01-1900.</p>
+				</div>
+			</div>
+			<br/>
+			<div>
+				<input type="password" minLength="8" name="password" data-ng-model="Professor.form.password" 
+				       required placeholder="Senha" />
+				<div data-ng-messages="Professor.professorForm.password.$error">
+					<p data-ng-message="required"><b>PASSWORD</b> é um campo obrigatório.</p>
+					<p data-ng-message="minlength">Mínimo <b>8 (OITO)</b> caracteres.</p>
+				</div>
+			</div>
+			<br/>
+			<div>
+				<input type="number" step="1" min="2" max="20" name="carga" data-ng-model="Professor.form.carga"
+					   required placeholder="Carga Horária" />
+				<div data-ng-messages="Professor.professorForm.carga.$error">
+					<p data-ng-message="required"><b>Carga</b> é um campo obrigatório.</p>
+					<p data-ng-message="min">Mínimo <b>2 (DUAS)</b> horas.</p>
+					<p data-ng-message="max">Máximo <b>20 (VINTE)</b> horas.</p>
+				</div>
+			</div>	
+			<br/>
+			<button class="btn btn-large green waves-effect waves-light col s12" type="submit" name="action">
+					Adicionar Professor
+			</button>
+			<button class="btn btn-large blue waves-effect waves-light col s12" 
+					data-ng-hide="!Professor.editing" data-ng-click="Professor.save(Professor.form)" type="submit" name="action">
+					Salvar edição
+			</button>	
+			</form>
+			<p class="col s12">
+				<label><input data-ng-model="searchProfessor" placeholder="Buscar Professor"></label>
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Nome</th>
+						<th>Aula</th>
+						<th>Idade</th>
+						<th>De</th>
+						<th>Carga (Hr)</th>
+						<th>Dia da Contratação</th>
+						<th>Password</th>
+					</tr>
+					<tbody>
+						<tr data-ng-style="checkboxStyle" data-ng-repeat="professor in Professor.professores | filter:searchProfessor"
+							data-ng-disabled="Professor.checkEdit($index, professor)" data-ng-class="{bold: !professor.selecionado, strike: professor.selecionado}">
+							<td>
+								<input type="checkbox" id="professor-{{$index}}"data-ng-click="checkboxStyle = Professor.checkboxStyle()" data-ng-disabled="Professor.checkEdit($index, professor)" data-ng-model="professor.selecionado">
+								<label for="professor-{{$index}}"></label>
+							</td>
+							<th>{{professor.name}}</th>
+							<th>{{professor.aula}}</th>
+							<th>{{professor.idade}}</th>
+							<th>{{professor.idade | maioridade}}</th>
+							<th>{{professor.carga}}</th>
+							<th>{{professor.dia_contratacao}}</th>
+							<th>{{professor.password}}</th>
+							<td>
+								<button class="btn btn-large blue waves-effect waves-light col s12" 
+									data-ng-hide="Professor.editing" data-ng-click="Professor.edit(professor, $index)" 
+									type="submit" name="action">
+									Editar
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</thead>
+			</table>
+			<button class="btn btn-large red waves-effect waves-light col s12" 
+				data-ng-click="Professor.remove(Professor.professores)" type="submit" name="action">
+				Deletar Professor
+			</button>
+		</div>
+		</div>
+	</div>
+	<script src="../../scripts/aula_13/exercicio_01_ao_04.js"></script>
+</body>
+</html>

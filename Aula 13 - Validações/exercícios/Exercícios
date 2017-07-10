@@ -1,0 +1,7 @@
+1 - Criar um input do tipo 'date', sua validação e mensagem desta validação.
+
+2 - Criar um input do tipo 'number', sua validação e mensagem desta validação
+
+3 - Criar um input do tipo 'password', sua validação e mensagem desta validação.
+
+4 - Passe todas as mensagens para ng-messages.
