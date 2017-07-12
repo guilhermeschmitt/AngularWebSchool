@@ -1,0 +1,40 @@
+html body select{
+	display: inline-block !important;
+}
+
+[disabled]{
+	background-color: #ccc !important;
+}
+
+.wrapper {
+	      max-width: 600px;
+	      margin: 0 auto;
+	    }
+	    .ng-hide{
+	    	height: 0;
+	    }
+	    .titulo-style{
+	    	background-color: green;
+	    	color: white;
+	    	font-weight: bold;
+	    	text-align: center;
+	    }
+	    .bold{
+	    	font-weight: bold !important;
+	    }
+	    .strike{
+	    	text-decoration: line-through !important;
+	    }
+	    .fundo-preto{
+	    	background-color: black;
+	    	color: white;
+	    }
+	    .fundo-branco{
+	    	background-color: white;
+	    	color: black;
+	    }
+	    .userEdit{
+	    	font-size: 32px;
+	    	text-align: center;
+	    	color: red;
+	    }

@@ -1,0 +1,58 @@
+<form name="Professor.professorForm" data-ng-submit="Professor.submitForm(Professor.form)" novalidate="">
+	<div>
+		<input type="text" name="name" data-ng-model="Professor.form.name" required placeholder="Nome do Professor"
+			   data-ng-model-options="{updateOn:'blur'}"/>
+		<div data-ng-messages="Professor.professorForm.name.$error">
+			<p data-ng-message="required">Nome do <b>PROFESSOR</b> é obrigatório.</p>
+		</div>
+	</div>
+	<br/>
+	<div>
+		<input type="text" name="aula" data-ng-model="Professor.form.aula" required placeholder="Nome da Aula"
+			   data-ng-model-options="{updateOn:'mouseleave'}"/>
+		<div data-ng-messages="Professor.professorForm.aula.$error">
+			<p data-ng-message="required">Nome da <b>AULA</b> é obritatória.</p>
+		</div>
+	</div>
+	<br/>
+	<div>
+		<input type="number" min="0" max="120" name="idade" data-ng-model="Professor.form.idade" required 
+		       placeholder="Idade do Professor" data-ng-model-options="{debounce:1000}"/>
+		<div data-ng-messages="Professor.professorForm.idade.$error">
+			<p data-ng-message="required"><b>IDADE</b> é um campo obrigatório.</p>
+			<p data-ng-message="min"><b>IDADE</b> deve ter um valor entre 0 e 120.</p>
+		</div>
+	</div>
+	<br/>
+	<div>
+		<input type="date" min="1900-01-01" name="date" data-ng-model="Professor.form.dia_contratacao" required 
+		       placeholder="Dia da Contratação" data-ng-model-options="{updateOn:'blur mouseleave'}"/>
+		<div data-ng-messages="Professor.professorForm.date.$error">
+			<p data-ng-message="required"><b>DIA DA CONTRATAÇÃO</b> é um campo obrigatório.</p>
+			<p data-ng-message="min">Data <b>MÍNIMA</b> é dia 01-01-1900.</p>
+		</div>
+	</div>
+	<br/>
+	<div>
+		<input type="password" minLength="8" name="password" data-ng-model="Professor.form.password" 
+		       required placeholder="Senha" data-ng-model-options="{updateOn: 'blur'}"/>
+		<div data-ng-messages="Professor.professorForm.password.$error">
+			<p data-ng-message="required"><b>PASSWORD</b> é um campo obrigatório.</p>
+			<p data-ng-message="minlength">Mínimo <b>8 (OITO)</b> caracteres.</p>
+		</div>
+	</div>
+	<br/>
+	<div>
+		<input type="number" step="1" min="2" max="20" name="carga" data-ng-model="Professor.form.carga"
+			   required placeholder="Carga Horária" data-ng-model-options="{updateOn:'blur', debounce: 1000}" />
+		<div data-ng-messages="Professor.professorForm.carga.$error">
+			<p data-ng-message="required"><b>Carga</b> é um campo obrigatório.</p>
+			<p data-ng-message="min">Mínimo <b>2 (DUAS)</b> horas.</p>
+			<p data-ng-message="max">Máximo <b>20 (VINTE)</b> horas.</p>
+		</div>
+	</div>	
+	<br/>
+	<button class="btn btn-large green waves-effect waves-light col s12" type="submit" name="action">
+			Adicionar Professor
+	</button>
+</form>

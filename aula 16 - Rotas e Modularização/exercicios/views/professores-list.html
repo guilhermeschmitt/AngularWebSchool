@@ -1,0 +1,45 @@
+<form name="Professor.professorForm" data-ng-submit="Professor.submitForm(Professor.form)" novalidate="">
+	<p>
+      Matéria que ele leciona: {{Professor.selected}}
+    </p>
+    <select data-ng-options="professor.aula as professor.name for professor in Professor.professores | orderBy:'name'" data-ng-model="Professor.selected">
+      <option value="">Escolha um professor</option>
+    </select>
+<p class="col s12">
+	<label><input data-ng-model="searchProfessor" data-ng-model-options="{debounce:1000}" placeholder="Buscar Professor"></label>
+</p>
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th>Nome</th>
+			<th>Aula</th>
+			<th>Idade</th>
+			<th>De</th>
+			<th>Carga (Hr)</th>
+			<th>Dia da Contratação</th>
+			<th>Password</th>
+		</tr>
+		<tbody>
+			<tr data-ng-style="checkboxStyle" data-ng-repeat="professor in Professor.professores | filter:searchProfessor"
+				data-ng-disabled="Professor.checkEdit($index, professor)" data-ng-class="{bold: !professor.selecionado, strike: professor.selecionado}">
+				<td>
+					<input type="checkbox" id="professor-{{$index}}"data-ng-click="checkboxStyle = Professor.checkboxStyle()" data-ng-disabled="Professor.checkEdit($index, professor)" data-ng-model="professor.selecionado">
+					<label for="professor-{{$index}}"></label>
+				</td>
+				<th>{{professor.name}}</th>
+				<th>{{professor.aula}}</th>
+				<th>{{professor.idade}}</th>
+				<th>{{professor.idade | maioridade}}</th>
+				<th>{{professor.carga}}</th>
+				<th>{{professor.dia_contratacao}}</th>
+				<th>{{professor.password}}</th>
+			</tr>
+		</tbody>
+	</thead>
+</table>
+<button class="btn btn-large red waves-effect waves-light col s12" 
+	data-ng-click="Professor.remove(Professor.professores)" type="submit" name="action">
+	Deletar Professor
+</button>	
+</form>

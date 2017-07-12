@@ -1,0 +1,3 @@
+1 - Criar a rota para a edição de um usuário, onde o mesmo irá ter que clicar em botão na view dos detalhes do usuário onde o levará para: /user/{{index}}/edit
+
+	-- Foi feito a rota, como pedido, porém, os valores não são carregados na view
