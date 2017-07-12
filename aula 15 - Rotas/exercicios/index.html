@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html data-ng-app="BeMEAN">
+<head>
+	<base href="/">
+	<meta charset="UTF-8">
+	<title>Exercício 01 e 02 - Aula 15</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" href="./assets/css/woanimate.css">
+	<script src="./assets/js/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+</head>
+</head>
+<body>
+	<div class="row wrapper">
+		<div data-ng-controller="ProfessorController as Professor">
+			<h1 data-ng-class="Professor.getTituloStyle()">{{Professor.universidade}}</h1>
+			<div data-ng-view></div>
+		</div>
+	</div>
+	<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+
+<h2>Dados do usuário</h2>
+<p> Buscar o professor pelo id: {{ ProfessorDetail.routeParams.id }}</p>
+<p class="card-panel">
+  Nome: {{ ProfessorDetail.professores[ProfessorDetail.routeParams.id].name}}
+  <br>
+  Aula: {{ ProfessorDetail.professores[ProfessorDetail.routeParams.id].aula}}
+  <br>
+  Idade: {{ ProfessorDetail.professores[ProfessorDetail.routeParams.id].idade}}
+  <br>
+  Carga Horária: {{ ProfessorDetail.professores[ProfessorDetail.routeParams.id].carga}}
+</p>
